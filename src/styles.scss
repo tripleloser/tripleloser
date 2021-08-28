@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  background-color: #424242;
+}
+body { margin: 0; padding: 10px; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1, h2, h3, h4, h5 {
+  color: #ffffff
+}
+
+.roster-card {
+    max-width: 400px;
+  }
+  
+.roster-card-header-image {
+    background-size: cover;
+    background-position: center;
+  }
+
+.roster-card-header-image img {
+    max-width: 40px;
+    max-height: 40px;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+  }

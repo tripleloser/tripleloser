@@ -1,0 +1,10 @@
+<div 
+    *ngIf="league !== undefined && league !== null && rosters !== undefined && rosters !== null" 
+    class=overview-container>
+    <h1>{{ league.name }}</h1>
+    <app-standings
+        [leagueId]="leagueConfig.leagueId"
+        [rosters]="rosters"
+        [leagueConfig]="leagueConfig"
+    ></app-standings>
+</div>
