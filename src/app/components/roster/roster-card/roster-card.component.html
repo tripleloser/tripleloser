@@ -1,6 +1,10 @@
 <div *ngIf="roster !== null && roster !== undefined">
     <mat-card class="roster-card">
-        <app-user [userId]="this.roster.owner_id" [leagueId]="this.roster.league_id"></app-user>
+        <app-user
+            [preview]="false"
+            [leagueUser]="user"
+            [leagueId]="roster.league_id"
+        ></app-user>
         <mat-card-content>
             <h3>Starters:</h3>
             <div *ngFor="let player of getStarters()">

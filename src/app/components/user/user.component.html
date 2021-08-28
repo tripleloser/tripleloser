@@ -1,9 +1,9 @@
-<div class="preview" *ngIf="this.user !== null && this.user !== undefined">
+<div class="preview" *ngIf="this.leagueUser !== null && this.leagueUser !== undefined">
     <mat-card-header>
         <div mat-card-avatar class="roster-card-header-image">
             <img [src]="getAvatarUrl()" />
         </div>
-        <div class="title" (click)="this.goToRoster()">{{ this.user.display_name }}</div>
-        <div class="subtitle">Team Name</div>
+        <div class="title" (click)="this.goToRoster()">{{ this.leagueUser.display_name }}</div>
+        <div class="subtitle">{{ this.leagueUser.metadata.team_name }}</div>
     </mat-card-header>
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LeagueUser } from 'src/app/models/leagueUsers.model';
 import { Roster } from 'src/app/models/roster.model';
 import { LeagueService } from 'src/app/services/league.service';
 
@@ -11,6 +12,7 @@ import { LeagueService } from 'src/app/services/league.service';
 export class RosterComponent implements OnInit {
 
   roster: Roster;
+  user: LeagueUser;
 
   constructor(private route: ActivatedRoute,
     private leagueService: LeagueService) { }
@@ -28,6 +30,13 @@ export class RosterComponent implements OnInit {
               this.roster = r;
             }
           });
+          this.leagueService.getLeagueUsers(leagueId).subscribe((l: LeagueUser[]) => {
+            if (l !== undefined && l !== null) {
+              this.user = l.find((user: LeagueUser) => {
+                return user.user_id === ownerId;
+              });
+            }
+          })
         }
       });
   }

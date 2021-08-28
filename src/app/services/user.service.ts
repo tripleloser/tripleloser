@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LeagueUser, UserMetaData } from '../models/leagueUsers.model';
 import { User } from '../models/user.model';
 import { ApiService } from './api.service';
 
@@ -15,5 +16,7 @@ export class UserService {
   getUser(id: string): Observable<User> {
     return this.api.getUser(id);
   }
+
+
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LeagueConfig } from 'src/app/models/config.model';
+import { LeagueUser } from 'src/app/models/leagueUsers.model';
 import { Roster } from 'src/app/models/roster.model';
 import { Standings } from 'src/app/models/standings.model';
 
@@ -12,6 +13,7 @@ export class StandingsComponent implements OnInit {
 
   @Input() leagueId: string;
   @Input() rosters: Roster[];
+  @Input() users: LeagueUser[];
   @Input() leagueConfig: LeagueConfig
   
   standings: Standings[] = [];
@@ -58,6 +60,15 @@ export class StandingsComponent implements OnInit {
       };
     }
     return '';
+  }
+
+  getLeagueUser(userId: string): LeagueUser {
+    if (this.users !== undefined && this.users !== null) {
+      return this.users.find((user: LeagueUser) => {
+        return user.user_id === userId;
+      })
+    }
+    return undefined;
   }
 
 }

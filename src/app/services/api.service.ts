@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { League } from '../models/league.model';
+import { LeagueUser } from '../models/leagueUsers.model';
 import { Player } from '../models/player.model';
 import { Roster } from '../models/roster.model';
 import { User } from '../models/user.model';
@@ -23,6 +24,10 @@ export class ApiService {
 
   getRosters(leagueId: string): Observable<Roster[]> {
     return this.http.get<Roster[]>(`${this.BASE_URL}/v1/league/${leagueId}/rosters`);
+  }
+
+  getLeagueUsers(leagueId: string): Observable<LeagueUser[]> {
+    return this.http.get<LeagueUser[]>(`${this.BASE_URL}/v1/league/${leagueId}/users`);
   }
 
   getUser(id: string): Observable<User> {

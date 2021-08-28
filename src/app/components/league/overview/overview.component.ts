@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Config, LeagueConfig } from 'src/app/models/config.model';
 import { League } from 'src/app/models/league.model';
+import { LeagueUser } from 'src/app/models/leagueUsers.model';
 import { Roster } from 'src/app/models/roster.model';
 import { LeagueService } from 'src/app/services/league.service';
 
@@ -14,6 +15,7 @@ export class OverviewComponent implements OnInit {
   @Input() leagueConfig: LeagueConfig;
 
   rosters: Roster[];
+  users: LeagueUser[];
   league: League;
 
   constructor(private leagueService: LeagueService) { }
@@ -29,6 +31,11 @@ export class OverviewComponent implements OnInit {
         this.league = l;
       }
     });
+    this.leagueService.getLeagueUsers(this.leagueConfig.leagueId).subscribe((l: LeagueUser[]) => {
+      if (l !== undefined && l !== null) {
+        this.users = l;
+      }
+    })
   }
 
 }

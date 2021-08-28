@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LeagueUser } from 'src/app/models/leagueUsers.model';
 import { Roster } from 'src/app/models/roster.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RosterCardComponent implements OnInit {
 
   @Input() roster: Roster;
+  @Input() user: LeagueUser;
 
   constructor(private userService: UserService) { }
 

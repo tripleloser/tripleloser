@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Config, LeagueConfig, RelegationSettings } from 'src/app/models/config.model';
-import { Roster } from 'src/app/models/roster.model';
+import { Config } from 'src/app/models/config.model';
 import { LeagueService } from 'src/app/services/league.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
