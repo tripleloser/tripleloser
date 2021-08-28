@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
 
   @Input() userId: string;
   @Input() leagueId: string;
+  @Input() preview: boolean;
   user: User;
 
   constructor(private userService: UserService,

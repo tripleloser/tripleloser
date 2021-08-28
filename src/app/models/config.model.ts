@@ -11,6 +11,6 @@ export class LeagueConfig {
 }
 
 export class RelegationSettings {
-    promoted: number;
+    playoffs: number;
     relegated: number;
 }

@@ -51,8 +51,8 @@ export class StandingsComponent implements OnInit {
 
   getTableRowClass(row: Standings): string {
     if (this.leagueConfig.relegationSettings !== undefined) {
-      if (this.leagueConfig.relegationSettings.promoted >= row.position) {
-        return 'promoted';
+      if (this.leagueConfig.relegationSettings.playoffs >= row.position) {
+        return 'playoffs';
       } else if (this.leagueConfig.relegationSettings.relegated <= row.position) {
         return 'relegated';
       };

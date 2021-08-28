@@ -17,10 +17,16 @@ export class RosterCardComponent implements OnInit {
   }
 
   getStarters(): string[] {
+    if (this.roster.players === null || this.roster.players === undefined) {
+      return [];
+    }
     return this.roster.starters;
   }
 
   getNoneStarters(): string[] {
+    if (this.roster.players === null || this.roster.players === undefined) {
+      return [];
+    }
     return this.roster.players.filter((p: string) => {
       return this.roster.starters.indexOf(p) < 0;
     });
