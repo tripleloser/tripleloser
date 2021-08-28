@@ -12,7 +12,28 @@ export class HomeComponent implements OnInit {
   config: Config = {
     leagues: [
       {
+        leagueId: '736264930570969088',
+        relegationSettings: {
+          playoffs: 4,
+          relegated: 1000
+        }
+      },
+      {
         leagueId: '736316343309168640',
+        relegationSettings: {
+          playoffs: 4,
+          relegated: 1000
+        }
+      },
+      {
+        leagueId: '736322597372928000',
+        relegationSettings: {
+          playoffs: 4,
+          relegated: 1000
+        }
+      },
+      {
+        leagueId: '736323833937645568',
         relegationSettings: {
           playoffs: 4,
           relegated: 1000
