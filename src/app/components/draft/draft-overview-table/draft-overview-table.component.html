@@ -9,7 +9,12 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let row">{{ row.draftPicks[0].metadata.first_name }} {{ row.draftPicks[0].metadata.last_name }}</td>
+        <td mat-cell *matCellDef="let row">
+          {{ row.draftPicks[0].metadata.first_name }} 
+          {{ row.draftPicks[0].metadata.last_name }} 
+          ({{ row.draftPicks[0].metadata.position }}) 
+          - {{ row.draftPicks[0].metadata.team }}
+        </td>
       </ng-container>
 
     <!-- Picked Column -->
