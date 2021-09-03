@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RosterComponent } from './components/roster/roster/roster.component';
+import { DraftOverviewComponent } from './draft/draft-overview/draft-overview.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'standings', component: HomeComponent },
+  { path: 'drafts', component: DraftOverviewComponent },
   { path: 'roster', component: RosterComponent },
 ];
 

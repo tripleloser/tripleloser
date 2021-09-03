@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Config } from 'src/app/models/config.model';
+import { ConfigService } from 'src/app/services/config.service';
 import { LeagueService } from 'src/app/services/league.service';
 
 @Component({
@@ -9,44 +10,14 @@ import { LeagueService } from 'src/app/services/league.service';
 })
 export class HomeComponent implements OnInit {
 
-  config: Config = {
-    leagues: [
-      {
-        leagueId: '736264930570969088',
-        relegationSettings: {
-          playoffs: 4,
-          relegated: 1000
-        }
-      },
-      {
-        leagueId: '736316343309168640',
-        relegationSettings: {
-          playoffs: 4,
-          relegated: 1000
-        }
-      },
-      {
-        leagueId: '736322597372928000',
-        relegationSettings: {
-          playoffs: 4,
-          relegated: 1000
-        }
-      },
-      {
-        leagueId: '736323833937645568',
-        relegationSettings: {
-          playoffs: 4,
-          relegated: 1000
-        }
-      }
-    ]
-  }
+  config: Config
 
   constructor(
-    private leagueService: LeagueService,
+    private configService: ConfigService,
   ) { }
 
   ngOnInit(): void {
+    this.config = this.configService.getLeaguesConfig();
   }
 
 }

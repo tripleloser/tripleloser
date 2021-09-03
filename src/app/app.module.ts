@@ -14,7 +14,11 @@ import { PlayerCardComponent } from './components/player/player-card/player-card
 import { StandingsComponent } from './components/league/standings/standings.component';
 import { RosterComponent } from './components/roster/roster/roster.component';
 import { HomeComponent } from './components/home/home.component';
-import { OverviewComponent } from './components/league/overview/overview.component'; 
+import { OverviewComponent } from './components/league/overview/overview.component';
+import { DraftOverviewComponent } from './draft/draft-overview/draft-overview.component';
+import { DraftOverviewTableComponent } from './draft/draft-overview-table/draft-overview-table.component'; 
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { OverviewComponent } from './components/league/overview/overview.compone
     StandingsComponent,
     RosterComponent,
     HomeComponent,
-    OverviewComponent
+    OverviewComponent,
+    DraftOverviewComponent,
+    DraftOverviewTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,8 @@ import { OverviewComponent } from './components/league/overview/overview.compone
     MatCardModule,
     MatDividerModule,
     MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

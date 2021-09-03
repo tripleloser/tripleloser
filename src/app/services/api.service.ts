@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Draft } from '../models/draft.model';
+import { DraftPick } from '../models/draftPick.model';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
 import { Player } from '../models/player.model';
@@ -20,6 +22,14 @@ export class ApiService {
 
   getLeague(id: string): Observable<League> {
     return this.http.get<League>(`${this.BASE_URL}/v1/league/${id}`);
+  }
+
+  getDrafts(leagueId: string): Observable<Draft[]> {
+    return this.http.get<Draft[]>(`${this.BASE_URL}/v1/league/${leagueId}/drafts`);
+  }
+
+  getDraftPicks(draftId: string): Observable<DraftPick[]> {
+    return this.http.get<DraftPick[]>(`${this.BASE_URL}/v1/draft/${draftId}/picks`);
   }
 
   getRosters(leagueId: string): Observable<Roster[]> {
