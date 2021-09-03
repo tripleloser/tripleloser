@@ -71,11 +71,17 @@ export class DraftOverviewTableComponent implements OnInit, AfterViewInit {
       });
     });
 
+    const lengthOfDrafts = this.picksOfDrafts.map(_ => _.length);
+
     data.forEach((row: DraftOverviewTableModel) => {
       row.stats.picked = row.draftPicks.length;
       const pickNumbers = row.draftPicks.map(_ => _.pick_no);
+      
       row.stats.firstPick = Math.min(...pickNumbers);
-      row.stats.lastPick = Math.max(...pickNumbers);
+      row.stats.lastPick =
+        pickNumbers.length === this.picksOfDrafts.length ?
+        Math.max(...pickNumbers) :
+        Math.max(...lengthOfDrafts) + 1;
       row.stats.differencePicked = row.stats.lastPick - row.stats.firstPick;
       row.stats.adp = pickNumbers.reduce((sum, current) => sum + current, 0) / pickNumbers.length;
     });
