@@ -30,7 +30,6 @@ export class UserComponent implements OnInit {
   }
 
   goToRoster(): void {
-    console.log("goToRoster()");
     this.router.navigate(['/roster'], { queryParams: { leagueId: this.leagueId, ownerId: this.leagueUser.user_id } });
   }
 

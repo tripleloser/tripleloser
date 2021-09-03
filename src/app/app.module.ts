@@ -15,10 +15,12 @@ import { StandingsComponent } from './components/league/standings/standings.comp
 import { RosterComponent } from './components/roster/roster/roster.component';
 import { HomeComponent } from './components/home/home.component';
 import { OverviewComponent } from './components/league/overview/overview.component';
-import { DraftOverviewComponent } from './draft/draft-overview/draft-overview.component';
-import { DraftOverviewTableComponent } from './draft/draft-overview-table/draft-overview-table.component'; 
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DraftOverviewComponent } from './components/draft/draft-overview/draft-overview.component';
+import { DraftOverviewTableComponent } from './components/draft/draft-overview-table/draft-overview-table.component';
+import { AllStandingsComponent } from './components/home/all-standings/all-standings.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     OverviewComponent,
     DraftOverviewComponent,
     DraftOverviewTableComponent,
+    AllStandingsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatCardModule,
     MatDividerModule,
     MatTableModule,
