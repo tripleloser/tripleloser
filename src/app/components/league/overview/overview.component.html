@@ -1,5 +1,5 @@
 <div 
-    *ngIf="league !== undefined && league !== null && rosters !== undefined && rosters !== null" 
+    *ngIf="league !== undefined && league !== null && rosters !== undefined && rosters !== null; else spinner"
     class=overview-container>
     <h1>{{ league.name }}</h1>
     <app-standings
@@ -9,3 +9,8 @@
         [users]="users"
     ></app-standings>
 </div>
+
+<ng-template #spinner>
+    <mat-spinner>
+    </mat-spinner>
+</ng-template>

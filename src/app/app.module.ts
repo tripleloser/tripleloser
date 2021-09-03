@@ -21,6 +21,7 @@ import { DraftOverviewComponent } from './components/draft/draft-overview/draft-
 import { DraftOverviewTableComponent } from './components/draft/draft-overview-table/draft-overview-table.component';
 import { AllStandingsComponent } from './components/home/all-standings/all-standings.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatTableModule,
     MatSortModule,
+    MatProgressSpinnerModule,
     MatPaginatorModule,
   ],
   providers: [],

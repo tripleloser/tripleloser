@@ -4,3 +4,7 @@
         [leagueNames]="leagueNames"
     ></app-draft-overview-table>
 </div>
+
+<div *ngIf="!dataLoaded">
+    <mat-spinner></mat-spinner>
+</div>
