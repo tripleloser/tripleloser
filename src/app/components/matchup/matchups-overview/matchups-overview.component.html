@@ -1,0 +1,15 @@
+<h1>
+    Matchups Week {{ currentWeek }}
+    <button mat-mini-fab (click)="this.addWeek(-1)">
+      -
+    </button>
+    <button mat-mini-fab (click)="this.addWeek(1)">
+        +
+    </button>
+</h1>
+
+<div *ngFor="let league of config.leagues">
+    <div class=overview-container>
+        <app-matchup [leagueId]="league.leagueId" [week]="currentWeek"></app-matchup>
+    </div>
+</div>

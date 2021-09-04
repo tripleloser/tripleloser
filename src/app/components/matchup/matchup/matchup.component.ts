@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { League } from 'src/app/models/league.model';
 import { LeagueUser } from 'src/app/models/leagueUsers.model';
@@ -12,7 +12,10 @@ import { MatchupPair } from './matchup-pair.model';
   templateUrl: './matchup.component.html',
   styleUrls: ['./matchup.component.scss']
 })
-export class MatchupComponent implements OnInit {
+export class MatchupComponent implements OnChanges {
+
+  @Input() leagueId: string;
+  @Input() week: number;
 
   matchups: Matchup[];
   rosters: Roster[];
@@ -24,10 +27,15 @@ export class MatchupComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private leagueService: LeagueService) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.route.queryParams.subscribe(params => {
-      const leagueId = params['leagueId'];
-      const week = params['week'];
+      // const leagueId = params['leagueId'];
+      // const week = params['week'];
+      this.matchups = undefined;
+      this.matchupPairs = undefined;
+      this.rosters = undefined;
+      const leagueId = this.leagueId;
+      const week = this.week;
       if (leagueId !== undefined && leagueId !== null && week !== undefined && week !== null) {
         this.leagueService
           .getRosters(leagueId)

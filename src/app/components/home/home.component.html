@@ -6,6 +6,13 @@
 </button>
 
 <button mat-fab color="primary"
+    [style.backgroundImage]="'url(' + 'assets/img/buttons/matchups.jpg' + ')'"
+    (click)="this.goTo('matchups')"
+>
+    Matchups
+</button>
+
+<button mat-fab color="primary"
     [style.backgroundImage]="'url(' + 'assets/img/buttons/drafts.jpg' + ')'"
     (click)="this.goTo('drafts')"
 >

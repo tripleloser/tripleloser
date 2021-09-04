@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
 import { LeagueUser } from 'src/app/models/leagueUsers.model';
-import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
 import { MatchupPair } from '../matchup/matchup-pair.model';
 
 @Component({
@@ -22,7 +19,6 @@ export class MatchupRowComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.matchupPair)
     this.leagueUser1 = this.leagueUsers.find((l: LeagueUser) => l.user_id === this.matchupPair.ownerId1);
     this.leagueUser2 = this.leagueUsers.find((l: LeagueUser) => l.user_id === this.matchupPair.ownerId2);
   }

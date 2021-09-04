@@ -10,16 +10,20 @@ export class ConfigService {
 
   getLeaguesConfig(): Config {
     return {
+      minWeek: 1,
+      maxWeek: 14,
+      currentWeek: 1,
       leagues: [
         {
           leagueId: '736264930570969088',
           relegationSettings: {
             playoffs: 4,
-            relegated: 1000
+            relegated: 1000,
           }
         },
         {
           leagueId: '736316343309168640',
+
           relegationSettings: {
             playoffs: 4,
             relegated: 1000

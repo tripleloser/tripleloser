@@ -1,4 +1,5 @@
-<div *ngIf="matchups !== undefined && rosters !== undefined && this.league !== undefined">
+<div *ngIf="matchups !== undefined && rosters !== undefined && this.league !== undefined; else spinner">
+    <h2>{{ league.name }}</h2>
     <div *ngFor="let matchupPair of matchupPairs">
         <app-matchup-row
             [matchupPair]="matchupPair"
@@ -7,3 +8,8 @@
         ></app-matchup-row>
     </div>
 </div>
+
+<ng-template #spinner>
+    <mat-spinner>
+    </mat-spinner>
+</ng-template>

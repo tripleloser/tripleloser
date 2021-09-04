@@ -23,7 +23,8 @@ import { AllStandingsComponent } from './components/home/all-standings/all-stand
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatchupComponent } from './components/matchup/matchup/matchup.component';
-import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-row.component'; 
+import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-row.component';
+import { MatchupsOverviewComponent } from './components/matchup/matchups-overview/matchups-overview.component'; 
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-ro
     AllStandingsComponent,
     MatchupComponent,
     MatchupRowComponent,
+    MatchupsOverviewComponent,
   ],
   imports: [
     BrowserModule,
