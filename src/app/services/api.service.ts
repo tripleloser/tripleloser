@@ -5,6 +5,7 @@ import { Draft } from '../models/draft.model';
 import { DraftPick } from '../models/draftPick.model';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
+import { Matchup } from '../models/matchup.model';
 import { Player } from '../models/player.model';
 import { Roster } from '../models/roster.model';
 import { User } from '../models/user.model';
@@ -46,6 +47,10 @@ export class ApiService {
 
   getPlayer(id: string): Observable<Player> {
     return this.http.get<Player>(`${this.BASE_URL}/players/nfl/${id}`);
+  }
+
+  getMatchups(leagueId: string, week: number): Observable<Matchup[]> {
+    return this.http.get<Matchup[]>(`${this.BASE_URL}/v1/league/${leagueId}/matchups/${week}`);
   }
   
 }

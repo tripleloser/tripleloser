@@ -1,0 +1,9 @@
+<div *ngIf="matchups !== undefined && rosters !== undefined && this.league !== undefined">
+    <div *ngFor="let matchupPair of matchupPairs">
+        <app-matchup-row
+            [matchupPair]="matchupPair"
+            [leagueId]="league.league_id"
+            [leagueUsers]="leagueUsers"
+        ></app-matchup-row>
+    </div>
+</div>

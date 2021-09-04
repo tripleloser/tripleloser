@@ -21,7 +21,9 @@ import { DraftOverviewComponent } from './components/draft/draft-overview/draft-
 import { DraftOverviewTableComponent } from './components/draft/draft-overview-table/draft-overview-table.component';
 import { AllStandingsComponent } from './components/home/all-standings/all-standings.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatchupComponent } from './components/matchup/matchup/matchup.component';
+import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-row.component'; 
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     DraftOverviewComponent,
     DraftOverviewTableComponent,
     AllStandingsComponent,
+    MatchupComponent,
+    MatchupRowComponent,
   ],
   imports: [
     BrowserModule,

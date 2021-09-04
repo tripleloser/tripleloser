@@ -1,0 +1,26 @@
+<div *ngIf="leagueUser1 !== undefined && leagueUser2 !== undefined">
+    <mat-card>
+        <span class="col">
+            <app-user
+                [preview]="false"
+                [leagueUser]="leagueUser1"
+                [leagueId]="leagueId"
+            ></app-user>
+        </span>
+        <span class="col-score">
+            {{ matchupPair.points1 }}
+        </span>
+    </mat-card>
+    <mat-card>
+        <span class="col">
+            <app-user
+                [preview]="false"
+                [leagueUser]="leagueUser2"
+                [leagueId]="leagueId"
+            ></app-user>
+        </span>
+        <span class="col-score">
+            {{ matchupPair.points2 }}
+        </span>
+    </mat-card>
+</div>
