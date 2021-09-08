@@ -7,11 +7,11 @@
         ></app-user>
         <mat-card-content>
             <h3>Starters:</h3>
-            <div *ngFor="let player of getStarters()">
+            <div *ngFor="let player of getStarters()" class="row">
                 <app-player-card [playerId]="player"></app-player-card>
             </div>
             <h3>Others:</h3>
-            <div *ngFor="let player of getNoneStarters()">
+            <div *ngFor="let player of getNoneStarters()" class="row">
                 <app-player-card [playerId]="player"></app-player-card>
             </div>
         </mat-card-content>

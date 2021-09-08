@@ -14,6 +14,8 @@ export class UserComponent implements OnInit {
   @Input() leagueId: string;
   @Input() preview: boolean;
   @Input() leagueUser: LeagueUser;
+  @Input() directionClass: string = 'left';
+
 
   constructor(private userService: UserService,
     private router: Router

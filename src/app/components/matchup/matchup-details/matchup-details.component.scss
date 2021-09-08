@@ -1,0 +1,30 @@
+.row {
+    background-color: #575757;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.col-starters {
+    width: 50%;
+}
+
+.col-starters.right {
+    float: right;
+}
+
+.col-starters.left {
+    float: left;
+}
+
+.col-score {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.col-score.right {
+    float: right;
+}
+
+.col-score.left {
+    float: left;
+}

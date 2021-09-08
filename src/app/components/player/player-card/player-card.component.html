@@ -1,9 +1,7 @@
-<ng-container *ngIf="this.player !== null && this.player !== undefined">
-    <mat-card-header>
-        <div mat-card-avatar class="roster-card-header-image">
-            <img [src]="getAvatarUrl()" onerror="this.style.display='none'"/>
-        </div>
-        <mat-card-title>{{ player.first_name }} {{ player.last_name }}</mat-card-title>
-        <mat-card-subtitle>{{ player.position }} - {{ player.team }}</mat-card-subtitle>
-    </mat-card-header>
-</ng-container>
+<div *ngIf="this.player !== null && this.player !== undefined" class="player-card-container">
+    <div class="roster-card-header-image" [style.float]="directionClass">
+        <img [src]="getAvatarUrl()" onerror="this.style.display='none'"/>
+    </div>
+    <div [style.text-align]="directionClass">{{ player.first_name }} {{ player.last_name }}</div>
+    <div [style.text-align]="directionClass">{{ player.position }} - {{ player.team }}</div>
+</div>

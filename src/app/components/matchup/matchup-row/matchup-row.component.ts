@@ -15,6 +15,8 @@ export class MatchupRowComponent implements OnInit {
 
   leagueUser1: LeagueUser;
   leagueUser2: LeagueUser;
+
+  panelOpenState = false;
   
   constructor() { }
 

@@ -24,7 +24,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatchupComponent } from './components/matchup/matchup/matchup.component';
 import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-row.component';
-import { MatchupsOverviewComponent } from './components/matchup/matchups-overview/matchups-overview.component'; 
+import { MatchupsOverviewComponent } from './components/matchup/matchups-overview/matchups-overview.component';
+import { MatchupDetailsComponent } from './components/matchup/matchup-details/matchup-details.component'; 
+import { MatExpansionModule } from '@angular/material/expansion'; 
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { MatchupsOverviewComponent } from './components/matchup/matchups-overvie
     MatchupComponent,
     MatchupRowComponent,
     MatchupsOverviewComponent,
+    MatchupDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { MatchupsOverviewComponent } from './components/matchup/matchups-overvie
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    MatExpansionModule,
     MatTableModule,
     MatSortModule,
     MatProgressSpinnerModule,

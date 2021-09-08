@@ -3,6 +3,6 @@ export class Matchup {
     roster_id: number;
     points: number;
     starters: string[];
-    starter_points: number[];
+    starters_points: number[];
     players: string[];
 }

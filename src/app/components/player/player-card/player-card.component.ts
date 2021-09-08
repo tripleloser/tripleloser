@@ -10,6 +10,7 @@ import { PlayerService } from 'src/app/services/player.service';
 export class PlayerCardComponent implements OnInit {
 
   @Input() playerId: string;
+  @Input() directionClass: string = 'left';
   player: Player;
 
   constructor(private playerService: PlayerService) { }

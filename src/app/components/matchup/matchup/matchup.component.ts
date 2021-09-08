@@ -83,6 +83,8 @@ export class MatchupComponent implements OnChanges {
         ownerId2: this.getUserIdByRosterId(foundMatchups[1].roster_id),
         points1: foundMatchups[0].points,
         points2: foundMatchups[1].points,
+        matchup1: foundMatchups[0],
+        matchup2: foundMatchups[1],
       });
     });
 

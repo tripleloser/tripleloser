@@ -1,26 +1,39 @@
 <div *ngIf="leagueUser1 !== undefined && leagueUser2 !== undefined">
-    <mat-card>
-        <span class="col">
-            <app-user
-                [preview]="false"
-                [leagueUser]="leagueUser1"
-                [leagueId]="leagueId"
-            ></app-user>
-        </span>
-        <span class="col-score">
-            {{ matchupPair.points1 }}
-        </span>
-    </mat-card>
-    <mat-card>
-        <span class="col">
-            <app-user
-                [preview]="false"
-                [leagueUser]="leagueUser2"
-                [leagueId]="leagueId"
-            ></app-user>
-        </span>
-        <span class="col-score">
-            {{ matchupPair.points2 }}
-        </span>
-    </mat-card>
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-card>
+                    <span class="col">
+                        <app-user
+                            [preview]="false"
+                            [leagueUser]="leagueUser1"
+                            [leagueId]="leagueId"
+                        ></app-user>
+                    </span>
+                    <span class="col-score">
+                        {{ matchupPair.points1 }}
+                    </span>
+                </mat-card>
+                <mat-card>
+                    <span class="col">
+                        <app-user
+                            [preview]="false"
+                            [leagueUser]="leagueUser2"
+                            [leagueId]="leagueId"
+                        ></app-user>
+                    </span>
+                    <span class="col-score">
+                        {{ matchupPair.points2 }}
+                    </span>
+                </mat-card>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngIf="panelOpenState">
+            <app-matchup-details [matchupPair]="matchupPair"></app-matchup-details>
+            </div>
+        </mat-expansion-panel>
+      </mat-accordion>
 </div>
