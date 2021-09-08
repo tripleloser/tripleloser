@@ -1,5 +1,23 @@
 .player-card-container {
     display: inline-block;
-    width: 80%;
+    width: 70%;
+    max-width: 200px;
     margin-left: 10px;
+}
+
+.title {
+    font-size: 12px;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.subtitle {
+    font-size: 10px;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    overflow-x: hidden;
+    white-space: nowrap;
 }

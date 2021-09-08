@@ -1,7 +1,7 @@
 <div 
     *ngIf="league !== undefined && league !== null && rosters !== undefined && rosters !== null; else spinner"
     class=overview-container>
-    <h1>{{ league.name }}</h1>
+    <h2>{{ league.name }}</h2>
     <app-standings
         [leagueId]="leagueConfig.leagueId"
         [rosters]="rosters"

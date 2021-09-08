@@ -12,3 +12,18 @@
 .col-score {
     float: right;
 }
+
+button {
+    background-color: dimgray !important;
+    border-radius: 40%;
+    cursor: default;
+    min-width: 50px;
+    height: 30px;
+    line-height: 21px;
+    font-size: 14px;
+
+    &::ng-deep .mat-button-wrapper{
+        line-height: 21px;
+        padding: 0;
+    }
+}

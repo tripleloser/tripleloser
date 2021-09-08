@@ -2,7 +2,7 @@
     <div *ngFor="let starterId of matchupPair.matchup1.starters; let i = index" class="row">
         <app-player-card [playerId]="starterId" [directionClass]="'right'"></app-player-card>
         <div class="col-score right">
-            {{ matchupPair.matchup1.starters_points[i] }}
+            {{ matchupPair.matchup1.starters_points[i] | number: '1.2-2' }}
         </div>
     </div>
 </div>
@@ -11,7 +11,7 @@
     <div *ngFor="let starterId of matchupPair.matchup2.starters; let i = index" class="row">
         <app-player-card [playerId]="starterId"></app-player-card>
         <div class="col-score left">
-            {{ matchupPair.matchup2.starters_points[i] }}
+            {{ matchupPair.matchup2.starters_points[i] | number: '1.2-2' }}
         </div>
     </div>
 </div>

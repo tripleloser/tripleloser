@@ -14,7 +14,7 @@
                         ></app-user>
                     </span>
                     <span class="col-score">
-                        {{ matchupPair.points1 }}
+                        <button mat-mini-fab>{{ matchupPair.points1 }}</button>
                     </span>
                 </mat-card>
                 <mat-card>
@@ -26,7 +26,7 @@
                         ></app-user>
                     </span>
                     <span class="col-score">
-                        {{ matchupPair.points2 }}
+                        <button mat-mini-fab>{{ matchupPair.points2 | number: '1.2-2' }}</button>
                     </span>
                 </mat-card>
             </mat-panel-title>

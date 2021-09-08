@@ -1,9 +1,16 @@
 img.header {
-    width: 25px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
- a {
+a {
     color: grey;
     text-decoration: none;
-  }
+}
+
+h1, h2 {
+  display: inline;
+  vertical-align: text-bottom;
+}
   

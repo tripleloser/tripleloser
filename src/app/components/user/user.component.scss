@@ -1,13 +1,40 @@
-.preview .title {
+.title-container {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.preview .title-container {
+    width: 200px;
+}
+
+.no-preview .title-container {
+    max-width: 100px;
+}
+
+.title {
     font-size: 12px;
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 
-.preview .subtitle {
+.subtitle {
     font-size: 10px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 
-.preview .roster-card-header-image img {
+.no-preview .title {
+    max-width: 100px;
+}
+
+.no-preview .subtitle {
+    max-width: 100px;
+}
+
+.roster-card-header-image img {
     max-width: 30px;
     max-height: 30px;
     float: left;

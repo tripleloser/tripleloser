@@ -2,6 +2,6 @@
     <div class="roster-card-header-image" [style.float]="directionClass">
         <img [src]="getAvatarUrl()" onerror="this.style.display='none'"/>
     </div>
-    <div [style.text-align]="directionClass">{{ player.first_name }} {{ player.last_name }}</div>
-    <div [style.text-align]="directionClass">{{ player.position }} - {{ player.team }}</div>
+    <div class="title" [style.text-align]="directionClass">{{ player.first_name }} {{ player.last_name }}</div>
+    <div class="subtitle" [style.text-align]="directionClass">{{ player.position }} - {{ player.team }}</div>
 </div>
