@@ -18,14 +18,14 @@ export class StandingsComponent implements OnInit {
   
   standings: Standings[] = [];
 
-  displayedColumns: string[] = ['position', 'user', 'wins', 'ties', 'losses', 'record'];
+  displayedColumns: string[] = ['position', 'user', 'record'];
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.rosters = this.rosters.sort((a: Roster, b: Roster) => {
-      return this.getRecord(b) - this.getRecord(a) || b.settings.wins - a.settings.wins;
+      return this.getRecord(b) - this.getRecord(a) || this.getPointsFor(b) - this.getPointsFor(a);
     });
     this.rosters.forEach((r: Roster, index: number) => {
       this.standings.push({
@@ -33,6 +33,14 @@ export class StandingsComponent implements OnInit {
         position: index + 1
       })
     })
+  }
+
+  getPointsFor(roster: Roster): number {
+    return roster.settings.fpts + roster.settings.fpts_decimal / 100;
+  }
+
+  getPointsAgainst(roster: Roster): number {
+    return roster.settings.fpts_against + roster.settings.fpts_against_decimal / 100;
   }
 
   getRecord(roster: Roster): number {
@@ -43,6 +51,12 @@ export class StandingsComponent implements OnInit {
     }
 
     return (roster.settings.wins + (roster.settings.ties / 2)) / totalGames;
+  }
+
+  getRecordString(roster: Roster): string {
+    return roster.settings.ties > 0 ?
+      [roster.settings.wins, roster.settings.ties, roster.settings.losses].join('-') :
+      [roster.settings.wins, roster.settings.losses].join('-');
   }
 
   getTotalGames(roster: Roster): number {

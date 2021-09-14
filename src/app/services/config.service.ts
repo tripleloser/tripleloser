@@ -12,7 +12,7 @@ export class ConfigService {
     return {
       minWeek: 1,
       maxWeek: 14,
-      currentWeek: 1,
+      currentWeek: 2,
       leagues: [
         {
           leagueId: '736264930570969088',

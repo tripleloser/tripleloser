@@ -4,7 +4,7 @@
 
 table {
     width: 100%;
-  }
+}
 
 td {
   min-width: 25px;
@@ -16,4 +16,19 @@ td {
 
 .relegated {
   background-color: #240000;
+}
+
+.user-container {
+  height: 30px;
+  margin-top: 5px;
+}
+
+.sub-user-container {
+  margin-top: 5px;
+  margin-left: 45px;
+}
+
+.small {
+  font-size: 10px;
+  color: grey;
 }
