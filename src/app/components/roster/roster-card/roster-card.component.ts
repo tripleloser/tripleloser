@@ -25,13 +25,20 @@ export class RosterCardComponent implements OnInit {
     return this.roster.starters;
   }
 
-  getNoneStarters(): string[] {
+  getBench(): string[] {
     if (this.roster.players === null || this.roster.players === undefined) {
       return [];
     }
     return this.roster.players.filter((p: string) => {
       return this.roster.starters.indexOf(p) < 0;
     });
+  }
+
+  getReserve(): string[] {
+    if (this.roster.reserve === null || this.roster.reserve === undefined) {
+      return [];
+    }
+    return this.roster.reserve;
   }
 
 }

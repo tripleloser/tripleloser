@@ -6,20 +6,26 @@
             [leagueId]="roster.league_id"
         ></app-user>
         <mat-card-content>
-            <h3>Starters</h3>
-            <div *ngFor="let player of getStarters()" class="row">
-                <app-player-card [playerId]="player"></app-player-card>
-            </div>
+            <ng-container *ngIf="getStarters().length > 0">
+                <h3>Starters</h3>
+                <div *ngFor="let player of getStarters()" class="row">
+                    <app-player-card [playerId]="player"></app-player-card>
+                </div>
+            </ng-container>
             
-            <h3>Bench</h3>
-            <div *ngFor="let player of getNoneStarters()" class="row">
-                <app-player-card [playerId]="player"></app-player-card>
-            </div>
+            <ng-container *ngIf="getBench().length > 0">
+                <h3>Bench</h3>
+                <div *ngFor="let player of getBench()" class="row">
+                    <app-player-card [playerId]="player"></app-player-card>
+                </div>
+            </ng-container>
 
-            <h3>IR</h3>
-            <div *ngFor="let player of getNoneStarters()" class="row">
-                <app-player-card [playerId]="player"></app-player-card>
-            </div>
+            <ng-container *ngIf="getReserve().length > 0">
+                <h3>IR</h3>
+                <div *ngFor="let player of getReserve()" class="row">
+                    <app-player-card [playerId]="player"></app-player-card>
+                </div>
+            </ng-container>
         </mat-card-content>
     </mat-card>
 </div>
