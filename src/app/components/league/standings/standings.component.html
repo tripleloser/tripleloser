@@ -69,7 +69,7 @@
             <td mat-cell *matCellDef="let row"> {{ getPointsAgainst(row.roster) | number: '1.2-2'}} </td>
         </ng-container>
     
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="getTableRowClass(row)"></tr>
     </table>
 </div>
