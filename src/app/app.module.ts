@@ -27,6 +27,8 @@ import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-ro
 import { MatchupsOverviewComponent } from './components/matchup/matchups-overview/matchups-overview.component';
 import { MatchupDetailsComponent } from './components/matchup/matchup-details/matchup-details.component'; 
 import { MatExpansionModule } from '@angular/material/expansion'; 
+import { ApiService } from './services/api.service';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatProgressSpinnerModule,
     MatPaginatorModule,
   ],
-  providers: [],
+  providers: [
+    ApiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

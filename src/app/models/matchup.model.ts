@@ -6,3 +6,8 @@ export class Matchup {
     starters_points: number[];
     players: string[];
 }
+
+export class GetMatchup {
+    leagueId: string;
+    week: number;
+}
