@@ -1,5 +1,5 @@
 import { Observable, of } from "rxjs";
-import { map, take } from "rxjs/operators";
+import { catchError, finalize, map, take } from "rxjs/operators";
 
 export class BaseStore<k,v> {
 
@@ -15,13 +15,23 @@ export class BaseStore<k,v> {
             return of(this.dict.get(dictKey));
         }
 
-        this.dict.set(dictKey, undefined);
+        // this.dict.set(dictKey, undefined);
 
         return this.getFunction(key)
-            .pipe(take(1))
-            .pipe(map((res: v) => {
-                this.dict.set(dictKey, res);
-                return res;
-            }));
+            .pipe(
+                map((res: v) => {
+                    if (res === undefined) {
+                        this.dict.delete(dictKey);
+                    } else {
+                        this.dict.set(dictKey, res);
+                    }
+                    return res;
+                }),
+                catchError(err => {
+                    console.log(err);
+                    this.dict.delete(dictKey);
+                    return of(undefined);
+                }),
+            );
     }
 }

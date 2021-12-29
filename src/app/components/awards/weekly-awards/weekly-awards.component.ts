@@ -6,17 +6,16 @@ import { League } from 'src/app/models/league.model';
 import { Matchup } from 'src/app/models/matchup.model';
 import { RosterAndLeague } from 'src/app/models/roster.model';
 import { Awards } from 'src/app/models/stats.model';
-import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LeagueService } from 'src/app/services/league.service';
 import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
-  selector: 'app-awards',
-  templateUrl: './awards.component.html',
-  styleUrls: ['./awards.component.scss']
+  selector: 'app-weekly-awards',
+  templateUrl: './weekly-awards.component.html',
+  styleUrls: ['./weekly-awards.component.scss']
 })
-export class AwardsComponent implements OnInit {
+export class WeeklyAwardsComponent implements OnInit {
 
   awards: Awards
   config: Config;

@@ -6,7 +6,7 @@
     <button mat-mini-fab (click)="this.addWeek(1)">
         +
     </button>
-    <mat-form-field>
+    <mat-form-field class="league-select">
         <mat-label>League</mat-label>
         <mat-select [(value)]="selectedLeagueId" (selectionChange)="selectLeague()">
           <mat-option *ngFor="let league of getSortedLeagues()" [value]="league.league_id">
@@ -33,19 +33,19 @@
         
         <div class="row">
             <div>
-                Best: {{ award.best.points }}
+                <span class="label-left">Best: {{ award.best.points }}</span>
                 <app-player-card [playerId]="award.best.player.player_id"></app-player-card>
                 <app-owner-information [rosterAndLeagues]="getOwner(award.best.player.player_id, currentWeek, true) | async"></app-owner-information>
             </div>
 
             <div>
-                Worst: {{ award.worst.points }}
+                <span class="label-left">Worst: {{ award.worst.points }}</span>
                 <app-player-card [playerId]="award.worst.player.player_id"></app-player-card>
                 <app-owner-information [rosterAndLeagues]="getOwner(award.worst.player.player_id, currentWeek, true) | async"></app-owner-information>
             </div>
 
             <div>
-                Bench: {{ award.bestBench.points }}
+                <span class="label-left">Bench: {{ award.bestBench.points }}</span>
                 <app-player-card [playerId]="award.bestBench.player.player_id"></app-player-card>
                 <app-owner-information [rosterAndLeagues]="getOwner(award.bestBench.player.player_id, currentWeek, false) | async"></app-owner-information>
             </div>

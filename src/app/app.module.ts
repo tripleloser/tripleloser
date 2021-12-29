@@ -28,9 +28,11 @@ import { MatchupsOverviewComponent } from './components/matchup/matchups-overvie
 import { MatchupDetailsComponent } from './components/matchup/matchup-details/matchup-details.component'; 
 import { MatExpansionModule } from '@angular/material/expansion'; 
 import { ApiService } from './services/api.service';
-import { AwardsComponent } from './components/stats/awards/awards.component';
+import { WeeklyAwardsComponent } from './components/awards/weekly-awards/weekly-awards.component';
 import { OwnerInformationComponent } from './components/awards/owner-information/owner-information.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AwardsOverviewComponent } from './components/awards/awards-overview/awards-overview.component'; 
 
 @NgModule({
   declarations: [
@@ -49,8 +51,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatchupRowComponent,
     MatchupsOverviewComponent,
     MatchupDetailsComponent,
-    AwardsComponent,
+    WeeklyAwardsComponent,
     OwnerInformationComponent,
+    AwardsOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatTabsModule,
   ],
   providers: [
     ApiService,

@@ -1,10 +1,24 @@
-position-div {
+.position-div {
     margin-bottom: 10px;
+}
+
+.league-select {
+    margin-left: 20px;
 }
 
 .row {
     background-color: dimgray !important;
     width: 600px;
+    padding: 10px;
+}
+
+.label-left {
+    display: inline-block;
+    width: 100px;
+}
+
+app-owner-information {
+    display: block;
 }
 
 .error {

@@ -78,10 +78,7 @@ export class LeagueService {
     return this
       .getRosters(leagueId)
       .pipe(
-        map(rosters => {
-          console.log(leagueId, rosters);
-          return rosters === undefined ? undefined : rosters[rosterId-1].owner_id
-        }),
+        map(rosters => rosters === undefined ? undefined : rosters[rosterId-1].owner_id),
         map(ownerId => this.getLeagueUsers(leagueId)
           .pipe(
             map(leagueUsers => leagueUsers?.find(_ => _.user_id === ownerId))),

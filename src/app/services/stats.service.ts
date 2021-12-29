@@ -83,7 +83,7 @@ import { PlayerService } from "./player.service";
         const best: Award = {points: -999, player: undefined};
         const worst: Award = {points: 999, player: undefined};
 
-        const positionPlayers = allPlayers.filter(player => player.fantasy_positions.indexOf(position) >= 0);
+        const positionPlayers = allPlayers.filter(player => player.fantasy_positions.indexOf(position) == 0);
         matchups.forEach((matchup: Matchup) => {
             matchup.starters.forEach((starterId: string) => {
                 const starter = positionPlayers.find(p => p.player_id === starterId);
@@ -108,7 +108,7 @@ import { PlayerService } from "./player.service";
         const best: Award = {points: -999, player: undefined};
         const worst: Award = {points: 999, player: undefined};
 
-        const positionPlayers = allPlayers.filter(player => player.fantasy_positions.indexOf(position) >= 0);
+        const positionPlayers = allPlayers.filter(player => player.fantasy_positions.indexOf(position) == 0);
         matchups.forEach((matchup: Matchup) => {
             const bench = matchup.players.filter((p: string) => {
                 return matchup.starters.indexOf(p) < 0;
