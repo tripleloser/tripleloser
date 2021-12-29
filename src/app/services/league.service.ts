@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
 import { GetMatchup, Matchup } from '../models/matchup.model';
@@ -38,7 +39,14 @@ export class LeagueService {
   }
 
   getMatchups(leagueId: string, week: number): Observable<Matchup[]> {
-    return this.matchupStore.get({leagueId, week});
+    return this.matchupStore.get({leagueId, week})
+      .pipe(map(m => {
+        m.forEach(_ => {
+          _.leagueId = leagueId;
+          _.week = week;
+        })
+        return m;
+      }));
   }
 
 

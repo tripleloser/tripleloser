@@ -29,6 +29,7 @@ import { MatchupDetailsComponent } from './components/matchup/matchup-details/ma
 import { MatExpansionModule } from '@angular/material/expansion'; 
 import { ApiService } from './services/api.service';
 import { AwardsComponent } from './components/stats/awards/awards.component';
+import { OwnerInformationComponent } from './components/awards/owner-information/owner-information.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AwardsComponent } from './components/stats/awards/awards.component';
     MatchupsOverviewComponent,
     MatchupDetailsComponent,
     AwardsComponent,
+    OwnerInformationComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,3 +25,8 @@ export class RosterMetaData {
     streak: string;
     record: string;
 }
+
+export class RosterAndLeague {
+    leagueId: string;
+    rosterId: number;
+}

@@ -18,38 +18,48 @@
 </div>
 <div *ngIf="this.awards !== undefined">
 
-    <div *ngFor="let award of this.awards.positionAwards">
+    <div *ngFor="let award of this.awards.positionAwards" class="position-div">
         <h2>
             {{ award.position }}
         </h2>
         
         <div class="row">
-            <span>
+            <div>
                 Best: {{ award.best.points }}
                 <app-player-card [playerId]="award.best.player.player_id"></app-player-card>
-            </span>
+                <app-owner-information [rosterAndLeagues]="getOwner(award.best.player.player_id, currentWeek, true) | async"></app-owner-information>
+            </div>
 
-            <span>
+            <div>
                 Worst: {{ award.worst.points }}
                 <app-player-card [playerId]="award.worst.player.player_id"></app-player-card>
-            </span>
+                <app-owner-information [rosterAndLeagues]="getOwner(award.worst.player.player_id, currentWeek, true) | async"></app-owner-information>
+            </div>
+
+            <div>
+                Bench: {{ award.bestBench.points }}
+                <app-player-card [playerId]="award.bestBench.player.player_id"></app-player-card>
+                <app-owner-information [rosterAndLeagues]="getOwner(award.bestBench.player.player_id, currentWeek, false) | async"></app-owner-information>
+            </div>
         </div>
 
-        <h2>
+        <!-- <h2>
             {{ award.position }} Benchwarmer
         </h2>
 
         <div class="row">
-            <span>
+            <div>
                 Best: {{ award.bestBench.points }}
                 <app-player-card [playerId]="award.bestBench.player.player_id"></app-player-card>
-            </span>
+                <app-owner-information [rosterAndLeagues]="getOwner(award.bestBench.player.player_id, currentWeek, false) | async"></app-owner-information>
+            </div>
 
-            <span>
+            <div>
                 Worst: {{ award.worstBench.points }}
                 <app-player-card [playerId]="award.worstBench.player.player_id"></app-player-card>
-            </span>
-        </div>
+                <app-owner-information [rosterAndLeagues]="getOwner(award.worstBench.player.player_id, currentWeek, false) | async"></app-owner-information>
+            </div>
+        </div> -->
     </div>
     
 </div>
