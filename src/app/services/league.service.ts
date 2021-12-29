@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeAll } from 'rxjs/operators';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
 import { GetMatchup, Matchup } from '../models/matchup.model';
@@ -72,5 +72,30 @@ export class LeagueService {
       return [];
     }
     return roster.reserve;
+  }
+
+  getLeagueUserName(leagueId: string, rosterId: number): Observable<string> {
+    return this
+      .getRosters(leagueId)
+      .pipe(
+        map(rosters => {
+          console.log(leagueId, rosters);
+          return rosters === undefined ? undefined : rosters[rosterId-1].owner_id
+        }),
+        map(ownerId => this.getLeagueUsers(leagueId)
+          .pipe(
+            map(leagueUsers => leagueUsers?.find(_ => _.user_id === ownerId))),
+          ),
+        mergeAll(),
+        map(leagueUser => leagueUser === undefined ? null : leagueUser.display_name)
+      );
+  }
+
+  getLeagueShortName(leagueId: string): Observable<string> {
+    return this
+      .getLeague(leagueId)
+      .pipe(
+        map(league => league === undefined ? '' : league.name.replace('Chefkochs Super League ', ''))
+      );
   }
 }

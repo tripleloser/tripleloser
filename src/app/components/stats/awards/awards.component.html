@@ -6,6 +6,14 @@
     <button mat-mini-fab (click)="this.addWeek(1)">
         +
     </button>
+    <mat-form-field>
+        <mat-label>League</mat-label>
+        <mat-select [(value)]="selectedLeagueId" (selectionChange)="selectLeague()">
+          <mat-option *ngFor="let league of getSortedLeagues()" [value]="league.league_id">
+            {{ getLeagueName(league.league_id) | async }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 </h1>
 
 <div *ngIf="this.awards === undefined">

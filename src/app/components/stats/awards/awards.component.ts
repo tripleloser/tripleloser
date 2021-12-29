@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { combineLatest, forkJoin, Observable, of, zip } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Config } from 'src/app/models/config.model';
+import { League } from 'src/app/models/league.model';
 import { Matchup } from 'src/app/models/matchup.model';
 import { RosterAndLeague } from 'src/app/models/roster.model';
 import { Awards } from 'src/app/models/stats.model';
+import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LeagueService } from 'src/app/services/league.service';
 import { StatsService } from 'src/app/services/stats.service';
@@ -21,6 +23,9 @@ export class AwardsComponent implements OnInit {
   currentWeek: number;
   error: boolean = false;
 
+  leagues: League[] = [];
+  selectedLeagueId: string;
+
   constructor(
       private leagueService: LeagueService,
       private statsService: StatsService,
@@ -30,13 +35,28 @@ export class AwardsComponent implements OnInit {
   ngOnInit(): void {
     this.config = this.configService.getLeaguesConfig();
     this.currentWeek = this.config.currentWeek;
+    this.leagues.push({league_id: 'all', name: 'Overall'});
+    this.config.leagues.forEach(league => {
+      this.leagueService
+        .getLeague(league.leagueId)
+        .subscribe(_ => {
+          this.leagues.push(_);
+        });
+    });
     this.loadData(this.currentWeek);
+  }
+
+  getLeagueIds(): string[] {
+    return this.selectedLeagueId === 'all' || this.selectedLeagueId === undefined ?
+      this.config.leagues.map(l => l.leagueId) :
+      [this.selectedLeagueId];
   }
 
   loadData(week: number): void {
     this.awards = undefined;
+
     this.statsService
-      .getAwards(this.config.leagues.map(l => l.leagueId), this.currentWeek)
+      .getAwards(this.getLeagueIds(), this.currentWeek)
       .pipe(take(1))
       .subscribe((awards: Awards) => {
         if (this.currentWeek == week) {
@@ -51,6 +71,10 @@ export class AwardsComponent implements OnInit {
       });
   }
 
+  getSortedLeagues(): League[] {
+    return this.leagues.sort((a, b) => a.league_id === 'all' ? -1 : a.name.localeCompare(b.name));
+  }
+
   addWeek(n: number) {
     const newWeek = this.currentWeek + n;
     if (newWeek < this.config.minWeek || newWeek > this.config.maxWeek) {
@@ -60,8 +84,12 @@ export class AwardsComponent implements OnInit {
     }
   }
 
+  selectLeague(): void {
+    this.loadData(this.currentWeek);
+  }
+
   getOwner(playerId: string, week: number, starter: boolean): Observable<RosterAndLeague[]> {
-    const leagueIds = this.config.leagues.map(_ => _.leagueId);
+    const leagueIds = this.getLeagueIds();
     const matchups$ = leagueIds.map(leagueId => this.leagueService.getMatchups(leagueId, week));
     return combineLatest(matchups$)
       .pipe(
@@ -80,6 +108,13 @@ export class AwardsComponent implements OnInit {
           return result;
         })
       );
+  }
+
+  getLeagueName(leagueId: string): Observable<string> {
+    if (leagueId === 'all') {
+      return of('Overall');
+    }
+    return this.leagueService.getLeagueShortName(leagueId);
   }
 
 }
