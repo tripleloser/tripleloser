@@ -1,10 +1,6 @@
-<span *ngIf="rosterAndLeagues !== undefined">
+<span *ngIf="rosterAndLeagues !== undefined && rosterAndLeagues !== null">
     <span *ngFor="let rosterAndLeague of rosterAndLeagues">
-        <span class="info">{{ getUserDisplayName(rosterAndLeague.leagueId, rosterAndLeague.rosterId) | async }}</span>
+        <span class="info">{{ getLeagueUserName(rosterAndLeague.leagueId, rosterAndLeague.rosterId) | async }}</span>
         <span class="info">({{ getLeagueName(rosterAndLeague.leagueId) | async }})</span>
     </span>
-    <!-- <div *ngFor="let row of data.values()">
-        <span class="info">{{ row.user }}</span>
-        <span class="info">({{ row.league }})</span>
-    </div> -->
 </span>

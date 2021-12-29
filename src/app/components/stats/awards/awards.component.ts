@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { combineLatest, forkJoin, Observable, of, zip } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Config } from 'src/app/models/config.model';
 import { League } from 'src/app/models/league.model';
 import { Matchup } from 'src/app/models/matchup.model';
 import { RosterAndLeague } from 'src/app/models/roster.model';
 import { Awards } from 'src/app/models/stats.model';
+import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LeagueService } from 'src/app/services/league.service';
 import { StatsService } from 'src/app/services/stats.service';
