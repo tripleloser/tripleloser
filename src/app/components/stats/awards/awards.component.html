@@ -1,0 +1,55 @@
+<h1>
+    Awards Week {{ currentWeek }}
+    <button mat-mini-fab (click)="this.addWeek(-1)">
+      -
+    </button>
+    <button mat-mini-fab (click)="this.addWeek(1)">
+        +
+    </button>
+</h1>
+
+<div *ngIf="this.awards === undefined">
+    <div *ngIf="this.error" class="error">
+        Error loading data
+    </div>
+    <div *ngIf="!this.error">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>
+<div *ngIf="this.awards !== undefined">
+
+    <div *ngFor="let award of this.awards.positionAwards">
+        <h2>
+            {{ award.position }}
+        </h2>
+        
+        <div class="row">
+            <span>
+                Best: {{ award.best.points }}
+                <app-player-card [playerId]="award.best.player.player_id"></app-player-card>
+            </span>
+
+            <span>
+                Worst: {{ award.worst.points }}
+                <app-player-card [playerId]="award.worst.player.player_id"></app-player-card>
+            </span>
+        </div>
+
+        <h2>
+            {{ award.position }} Benchwarmer
+        </h2>
+
+        <div class="row">
+            <span>
+                Best: {{ award.bestBench.points }}
+                <app-player-card [playerId]="award.bestBench.player.player_id"></app-player-card>
+            </span>
+
+            <span>
+                Worst: {{ award.worstBench.points }}
+                <app-player-card [playerId]="award.worstBench.player.player_id"></app-player-card>
+            </span>
+        </div>
+    </div>
+    
+</div>

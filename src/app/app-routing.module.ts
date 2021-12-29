@@ -5,6 +5,7 @@ import { AllStandingsComponent } from './components/home/all-standings/all-stand
 import { HomeComponent } from './components/home/home.component';
 import { MatchupsOverviewComponent } from './components/matchup/matchups-overview/matchups-overview.component';
 import { RosterComponent } from './components/roster/roster/roster.component';
+import { AwardsComponent } from './components/stats/awards/awards.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'matchups', component: MatchupsOverviewComponent },
   { path: 'drafts', component: DraftOverviewComponent },
   { path: 'roster', component: RosterComponent },
+  { path: 'awards', component: AwardsComponent },
 ];
 
 @NgModule({

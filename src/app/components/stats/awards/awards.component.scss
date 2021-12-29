@@ -1,0 +1,17 @@
+.row {
+    background-color: dimgray !important;
+    width: 600px;
+}
+
+.row > span {
+    width: 300px;
+}
+
+.error {
+    color: red;
+}
+
+h1 button {
+    background-color: dimgray;
+    margin-left: 5px;
+}

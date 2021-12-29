@@ -40,4 +40,29 @@ export class LeagueService {
   getMatchups(leagueId: string, week: number): Observable<Matchup[]> {
     return this.matchupStore.get({leagueId, week});
   }
+
+
+
+  getStarters(roster: Roster): string[] {
+    if (roster.players === null || roster.players === undefined) {
+      return [];
+    }
+    return roster.starters;
+  }
+
+  getBench(roster: Roster): string[] {
+    if (roster.players === null || roster.players === undefined) {
+      return [];
+    }
+    return roster.players.filter((p: string) => {
+      return roster.starters.indexOf(p) < 0;
+    });
+  }
+
+  getReserve(roster: Roster): string[] {
+    if (roster.reserve === null || roster.reserve === undefined) {
+      return [];
+    }
+    return roster.reserve;
+  }
 }

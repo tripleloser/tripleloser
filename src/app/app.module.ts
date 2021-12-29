@@ -28,7 +28,7 @@ import { MatchupsOverviewComponent } from './components/matchup/matchups-overvie
 import { MatchupDetailsComponent } from './components/matchup/matchup-details/matchup-details.component'; 
 import { MatExpansionModule } from '@angular/material/expansion'; 
 import { ApiService } from './services/api.service';
-import { PlayerService } from './services/player.service';
+import { AwardsComponent } from './components/stats/awards/awards.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { PlayerService } from './services/player.service';
     MatchupRowComponent,
     MatchupsOverviewComponent,
     MatchupDetailsComponent,
+    AwardsComponent,
   ],
   imports: [
     BrowserModule,

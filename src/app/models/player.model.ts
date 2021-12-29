@@ -3,6 +3,7 @@ export class Player {
     first_name: string;
     last_name: string;
     position: string;
+    fantasy_positions: string[];
     status: string;
     team: string;
     college: string;

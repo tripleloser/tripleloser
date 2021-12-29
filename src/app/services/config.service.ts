@@ -6,6 +6,8 @@ import { Config } from '../models/config.model';
 })
 export class ConfigService {
 
+  public positions: string[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DL', 'LB', 'DB']
+
   constructor() { }
 
   getCurrentWeek(): number {
@@ -56,7 +58,6 @@ export class ConfigService {
         },
         {
           leagueId: '736316343309168640',
-
           relegationSettings: {
             playoffs: 4,
             relegated: 1000
