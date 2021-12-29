@@ -73,4 +73,20 @@ export class LeagueService {
     }
     return roster.reserve;
   }
+
+  getUserDisplayName(leagueId: string, rosterId: number): Observable<string> {
+    return this
+      .getLeagueUsers(leagueId)
+      .pipe(
+        map(leagueUsers => leagueUsers === undefined ? '' : leagueUsers[rosterId].display_name)
+      );
+  }
+
+  getLeagueShortName(leagueId: string): Observable<string> {
+    return this
+      .getLeague(leagueId)
+      .pipe(
+        map(league => league === undefined ? '' : league.name.replace('Chefkochs Super League ', ''))
+      );
+  }
 }

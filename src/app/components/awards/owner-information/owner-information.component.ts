@@ -41,19 +41,11 @@ export class OwnerInformationComponent implements AfterContentInit   {
   }
 
   getUserDisplayName(leagueId: string, rosterId: number): Observable<string> {
-    return this.leagueService
-      .getLeagueUsers(leagueId)
-      .pipe(
-        map(leagueUsers => leagueUsers === undefined ? '' : leagueUsers[rosterId].display_name)
-      );
+    return this.leagueService.getUserDisplayName(leagueId, rosterId);
   }
 
   getLeagueName(leagueId: string): Observable<string> {
-    return this.leagueService
-      .getLeague(leagueId)
-      .pipe(
-        map(league => league === undefined ? '' : league.name.replace('Chefkochs Super League ', ''))
-      );
+    return this.leagueService.getLeagueShortName(leagueId);
   }
 
 }
