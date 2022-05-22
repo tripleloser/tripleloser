@@ -56,13 +56,13 @@ export class ConfigService {
             relegated: 1000,
           }
         },
-        // {
-        //   leagueId: '784687705807306752',
-        //   relegationSettings: {
-        //     playoffs: 4,
-        //     relegated: 1000,
-        //   }
-        // }
+        {
+          leagueId: '784687705807306752',
+          relegationSettings: {
+            playoffs: 4,
+            relegated: 1000,
+          }
+        }
       ]
     };
   }

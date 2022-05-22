@@ -65,8 +65,8 @@ export class CurrentDraftSlotComponent implements OnInit, OnChanges {
       return "#ff795a";
     }
 
-    if (this.pick.metadata.position.indexOf("#6d7df5") > -1) {
-      return "#c05d84";
+    if (this.pick.metadata.position.indexOf("LB") > -1) {
+      return "#6d7df5";
     }
 
     if (this.pick.metadata.position.indexOf("DB") > -1) {
