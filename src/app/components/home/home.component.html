@@ -1,4 +1,11 @@
 <button mat-fab color="primary"
+    [style.backgroundImage]="'url(' + 'assets/img/buttons/drafts.jpg' + ')'"
+    (click)="this.goTo('drafts')"
+>
+    Draft
+</button>
+
+<!-- <button mat-fab color="primary"
     [style.backgroundImage]="'url(' + 'assets/img/buttons/standings.jpg' + ')'"
     (click)="this.goTo('standings')"
 >
@@ -17,11 +24,4 @@
     (click)="this.goTo('awards')"
 >
     Awards
-</button>
-
-<button mat-fab color="primary"
-    [style.backgroundImage]="'url(' + 'assets/img/buttons/drafts.jpg' + ')'"
-    (click)="this.goTo('drafts')"
->
-    Draft Stats
-</button>
+</button> -->

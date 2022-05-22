@@ -1,6 +1,7 @@
+import { flatten } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, mergeAll } from 'rxjs/operators';
+import { find, map, mergeAll } from 'rxjs/operators';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
 import { GetMatchup, Matchup } from '../models/matchup.model';
@@ -85,6 +86,14 @@ export class LeagueService {
           ),
         mergeAll(),
         map(leagueUser => leagueUser === undefined ? null : leagueUser.display_name)
+      );
+  }
+
+  getLeagueUserByUserId(leagueId: string, userId: string): Observable<LeagueUser> {
+    return this
+      .getLeagueUsers(leagueId)
+      .pipe(
+        map(users => users.find(u => u.user_id === userId))
       );
   }
 

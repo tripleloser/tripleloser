@@ -1,0 +1,20 @@
+<div
+    class="draft-slot-container"
+    [style.backgroundColor]="getBackgroundColor()"
+>
+    <div *ngIf="pick === undefined" class="information-row small">
+        {{ round }}.{{ slot }}
+    </div>
+
+    <div *ngIf="pick !== undefined">
+        <div class="information-row small">
+            {{ round }}.{{ slot }}
+        </div>
+        <div class="information-row">
+            {{ pick.metadata.first_name[0] }}. {{ pick.metadata.last_name }}
+        </div>
+        <div class="information-row">
+            {{ pick.metadata.position }} - {{ pick.metadata.team }}
+        </div>
+    </div>
+</div>

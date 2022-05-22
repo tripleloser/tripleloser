@@ -1,0 +1,17 @@
+<div class="draft-slot-container">
+
+    <div>
+        <div>
+            <div class="roster-card-header-image">
+                <img [src]="getAvatarUrl()" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="information-row">
+            {{ getLeagueUserName() | async }}
+        </div>
+    </div>
+
+</div>

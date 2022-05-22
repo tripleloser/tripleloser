@@ -32,7 +32,11 @@ import { WeeklyAwardsComponent } from './components/awards/weekly-awards/weekly-
 import { OwnerInformationComponent } from './components/awards/owner-information/owner-information.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AwardsOverviewComponent } from './components/awards/awards-overview/awards-overview.component'; 
+import { AwardsOverviewComponent } from './components/awards/awards-overview/awards-overview.component';
+import { CurrentDraftComponent } from './components/draft/current-draft/current-draft.component';
+import { CurrentDraftLeagueComponent } from './components/draft/current-draft-league/current-draft-league.component';
+import { CurrentDraftSlotComponent } from './components/draft/current-draft-slot/current-draft-slot.component';
+import { CurrentDraftSlotTeamComponent } from './components/draft/current-draft-slot-team/current-draft-slot-team.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,10 @@ import { AwardsOverviewComponent } from './components/awards/awards-overview/awa
     WeeklyAwardsComponent,
     OwnerInformationComponent,
     AwardsOverviewComponent,
+    CurrentDraftComponent,
+    CurrentDraftLeagueComponent,
+    CurrentDraftSlotComponent,
+    CurrentDraftSlotTeamComponent,
   ],
   imports: [
     BrowserModule,

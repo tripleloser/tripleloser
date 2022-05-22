@@ -1,0 +1,24 @@
+<p>current-draft-league works!</p>
+{{leagueId}}
+
+<ng-container *ngIf="loaded">
+
+    <div class="round-row">
+        <span *ngFor="let slot of slots">
+            <app-current-draft-slot-team
+                [draft]="draft"
+                [slot]="slot"
+            ></app-current-draft-slot-team>
+        </span>
+    </div>
+
+    <div *ngFor="let round of rounds" class="round-row">
+        <span *ngFor="let slot of slots">
+            <app-current-draft-slot
+            [round]="round"
+            [slot]="slot"
+            [pick]="getPick(round, slot)"
+            ></app-current-draft-slot>
+        </span>
+    </div>
+</ng-container>

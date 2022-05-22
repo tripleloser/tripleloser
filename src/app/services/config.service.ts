@@ -50,31 +50,17 @@ export class ConfigService {
       currentWeek: this.getCurrentWeek(),
       leagues: [
         {
-          leagueId: '736264930570969088',
+          leagueId: '784818253506748416',
           relegationSettings: {
             playoffs: 4,
             relegated: 1000,
           }
         },
         {
-          leagueId: '736316343309168640',
+          leagueId: '784818253506748416',
           relegationSettings: {
             playoffs: 4,
-            relegated: 1000
-          }
-        },
-        {
-          leagueId: '736322597372928000',
-          relegationSettings: {
-            playoffs: 4,
-            relegated: 1000
-          }
-        },
-        {
-          leagueId: '736323833937645568',
-          relegationSettings: {
-            playoffs: 4,
-            relegated: 1000
+            relegated: 1000,
           }
         }
       ]

@@ -1,0 +1,20 @@
+.draft-slot-container {
+    display: inline-flex;
+    border-radius: 7px;
+    width: 100px;
+    height: 60px;
+    padding: 2px;
+    margin: 2px;
+    font-size: small;
+}
+
+.information-row {
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.small {
+    font-size: smaller;
+}

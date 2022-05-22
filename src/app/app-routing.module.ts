@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AwardsOverviewComponent } from './components/awards/awards-overview/awards-overview.component';
+import { CurrentDraftComponent } from './components/draft/current-draft/current-draft.component';
 import { DraftOverviewComponent } from './components/draft/draft-overview/draft-overview.component';
 import { AllStandingsComponent } from './components/home/all-standings/all-standings.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'standings', component: AllStandingsComponent },
   { path: 'matchups', component: MatchupsOverviewComponent },
-  { path: 'drafts', component: DraftOverviewComponent },
+  { path: 'drafts', component: CurrentDraftComponent },
   { path: 'roster', component: RosterComponent },
   { path: 'awards', component: AwardsOverviewComponent },
 ];

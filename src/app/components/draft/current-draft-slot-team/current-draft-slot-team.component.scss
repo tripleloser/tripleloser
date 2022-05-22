@@ -1,0 +1,33 @@
+.draft-slot-container {
+    display: inline-block;
+    border-radius: 7px;
+    width: 100px;
+    height: 50px;
+    padding: 2px;
+    margin: 2px;
+    font-size: small;
+    background-color: #454545;
+}
+
+.draft-slot-container div {
+    display: block;
+    width: 100px;
+}
+
+.roster-card-header-image {
+    display: inline-block;
+}
+
+.roster-card-header-image img {
+    display: block;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+  }
+
+.information-row {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
