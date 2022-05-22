@@ -1,4 +1,5 @@
 export class Roster {
+    roster_id: number;
     owner_id: string;
     league_id: string;
     players: string[];

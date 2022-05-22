@@ -5,7 +5,7 @@ export class Draft {
     status: string;
     season: string;
     settings: DraftSettings;
-    draft_order: Map<string, number>;
+    draft_order: any;
 }
 
 export class DraftSettings {

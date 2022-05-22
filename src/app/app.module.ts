@@ -22,6 +22,7 @@ import { DraftOverviewTableComponent } from './components/draft/draft-overview-t
 import { AllStandingsComponent } from './components/home/all-standings/all-standings.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon'; 
 import { MatchupComponent } from './components/matchup/matchup/matchup.component';
 import { MatchupRowComponent } from './components/matchup/matchup-row/matchup-row.component';
 import { MatchupsOverviewComponent } from './components/matchup/matchups-overview/matchups-overview.component';
@@ -78,6 +79,7 @@ import { CurrentDraftSlotTeamComponent } from './components/draft/current-draft-
     MatPaginatorModule,
     MatSelectModule,
     MatTabsModule,
+    MatIconModule
   ],
   providers: [
     ApiService,

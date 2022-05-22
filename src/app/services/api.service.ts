@@ -6,8 +6,10 @@ import { DraftPick } from '../models/draftPick.model';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
 import { Matchup } from '../models/matchup.model';
+import { NflState } from '../models/nflState.model';
 import { Player } from '../models/player.model';
 import { Roster } from '../models/roster.model';
+import { TradedPick } from '../models/tradedPick.model';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -21,6 +23,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getNflState(): Observable<NflState> {
+    return this.http.get<NflState>(`${this.BASE_URL}/v1/state/nfl`);
+  }
+
   getLeague(id: string): Observable<League> {
     return this.http.get<League>(`${this.BASE_URL}/v1/league/${id}`);
   }
@@ -31,6 +37,10 @@ export class ApiService {
 
   getDraftPicks(draftId: string): Observable<DraftPick[]> {
     return this.http.get<DraftPick[]>(`${this.BASE_URL}/v1/draft/${draftId}/picks`);
+  }
+
+  getTradedPicks(leagueId: string): Observable<TradedPick[]> {
+    return this.http.get<TradedPick[]>(`${this.BASE_URL}/v1/league/${leagueId}/traded_picks`);
   }
 
   getRosters(leagueId: string): Observable<Roster[]> {

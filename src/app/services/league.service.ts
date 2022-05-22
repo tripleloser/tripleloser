@@ -5,7 +5,9 @@ import { find, map, mergeAll } from 'rxjs/operators';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
 import { GetMatchup, Matchup } from '../models/matchup.model';
+import { NflState } from '../models/nflState.model';
 import { Roster } from '../models/roster.model';
+import { TradedPick } from '../models/tradedPick.model';
 import { ApiService } from './api.service';
 import { BaseStore } from './base.store';
 
@@ -18,13 +20,20 @@ export class LeagueService {
   private rosterStore: BaseStore<string,Roster[]>;
   private leagueUserStore: BaseStore<string,LeagueUser[]>;
   private matchupStore: BaseStore<GetMatchup,Matchup[]>;
+  private tradedPickStore: BaseStore<string,TradedPick[]>;
+  private nflStateStore: BaseStore<string,NflState>;
 
   constructor(private api: ApiService) {
     this.leagueStore = new BaseStore<string,League>((id: string) => this.api.getLeague(id));
     this.rosterStore = new BaseStore<string,Roster[]>((id: string) => this.api.getRosters(id));
     this.leagueUserStore = new BaseStore<string,LeagueUser[]>((id: string) => this.api.getLeagueUsers(id));
-    this.matchupStore =
-      new BaseStore<GetMatchup,Matchup[]>((m: GetMatchup) => this.api.getMatchups(m.leagueId, m.week));
+    this.matchupStore = new BaseStore<GetMatchup,Matchup[]>((m: GetMatchup) => this.api.getMatchups(m.leagueId, m.week));
+    this.tradedPickStore = new BaseStore<string,TradedPick[]>((leagueId: string) => { return this.api.getTradedPicks(leagueId) });
+    this.nflStateStore = new BaseStore<string,NflState>(() => { return this.api.getNflState() });
+  }
+
+  getNflState(): Observable<NflState> {
+    return this.nflStateStore.get("nfl");
   }
 
   getLeague(id: string): Observable<League> {
@@ -48,6 +57,17 @@ export class LeagueService {
         })
         return m;
       }));
+  }
+
+  getTradedPicks(leagueId: string): Observable<TradedPick[]> {
+    return this.tradedPickStore.get(leagueId);
+  }
+
+  getTradedPicksByYear(leagueId: string, season: string): Observable<TradedPick[]> {
+    return this.tradedPickStore.get(leagueId)
+      .pipe(
+        map(p => p.filter(_ => _.season.toString() === season))
+      );
   }
 
 

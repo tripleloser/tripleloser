@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" *ngIf="league !== undefined">
 
     <h2>
         {{ league.name }}
@@ -18,9 +18,11 @@
         <div *ngFor="let round of rounds" class="round-row">
             <span *ngFor="let slot of slots">
                 <app-current-draft-slot
+                [leagueId]="leagueId"
                 [round]="round"
                 [slot]="slot"
                 [pick]="getPick(round, slot)"
+                [tradedPicks]="tradedPicks"
                 ></app-current-draft-slot>
             </span>
         </div>

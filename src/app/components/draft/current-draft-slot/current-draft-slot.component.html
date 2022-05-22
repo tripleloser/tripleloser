@@ -4,11 +4,17 @@
 >
     <div *ngIf="pick === undefined" class="information-row small">
         {{ round }}.{{ slot }}
+        <span class="traded-pick">
+            {{ getTradedPickUserName() | async }}
+        </span>
     </div>
 
     <div *ngIf="pick !== undefined">
         <div class="information-row small">
             {{ round }}.{{ slot }}
+            <span class="traded-pick">
+                {{ getTradedPickUserName() | async }}
+            </span>
         </div>
         <div class="information-row">
             {{ pick.metadata.first_name[0] }}. {{ pick.metadata.last_name }}

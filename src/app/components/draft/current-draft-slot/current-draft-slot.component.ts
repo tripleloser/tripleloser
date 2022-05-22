@@ -1,20 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { DraftPick } from 'src/app/models/draftPick.model';
+import { Roster } from 'src/app/models/roster.model';
+import { TradedPick } from 'src/app/models/tradedPick.model';
+import { LeagueService } from 'src/app/services/league.service';
 
 @Component({
   selector: 'app-current-draft-slot',
   templateUrl: './current-draft-slot.component.html',
   styleUrls: ['./current-draft-slot.component.scss']
 })
-export class CurrentDraftSlotComponent implements OnInit {
+export class CurrentDraftSlotComponent implements OnInit, OnChanges {
 
+  @Input() leagueId: string;
   @Input() pick: DraftPick;
+  @Input() tradedPicks: TradedPick[];
   @Input() round: number;
   @Input() slot: number;
 
-  constructor() { }
+  tradedPick: TradedPick;
+
+  constructor(
+    private leagueService: LeagueService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    if (this.tradedPicks !== undefined) {
+      this.tradedPick = this.tradedPicks.find(p => p.round === this.round && this.slot === p.slot);
+    }
+  }
+
+  getTradedPickUserName(): Observable<string> {
+    if (this.tradedPick !== undefined) {
+      return this.leagueService.getLeagueUserName(this.leagueId, this.tradedPick.owner_id);
+    }
+    return of('');
   }
 
   getBackgroundColor(): string {
