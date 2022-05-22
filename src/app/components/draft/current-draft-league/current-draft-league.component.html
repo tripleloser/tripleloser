@@ -1,24 +1,29 @@
-<p>current-draft-league works!</p>
-{{leagueId}}
+<div class="content">
 
-<ng-container *ngIf="loaded">
+    <h2>
+        {{ league.name }}
+    </h2>
 
-    <div class="round-row">
-        <span *ngFor="let slot of slots">
-            <app-current-draft-slot-team
-                [draft]="draft"
+    <ng-container *ngIf="loaded">
+
+        <div class="round-row">
+            <span *ngFor="let slot of slots">
+                <app-current-draft-slot-team
+                    [draft]="draft"
+                    [slot]="slot"
+                ></app-current-draft-slot-team>
+            </span>
+        </div>
+
+        <div *ngFor="let round of rounds" class="round-row">
+            <span *ngFor="let slot of slots">
+                <app-current-draft-slot
+                [round]="round"
                 [slot]="slot"
-            ></app-current-draft-slot-team>
-        </span>
-    </div>
+                [pick]="getPick(round, slot)"
+                ></app-current-draft-slot>
+            </span>
+        </div>
+    </ng-container>
 
-    <div *ngFor="let round of rounds" class="round-row">
-        <span *ngFor="let slot of slots">
-            <app-current-draft-slot
-            [round]="round"
-            [slot]="slot"
-            [pick]="getPick(round, slot)"
-            ></app-current-draft-slot>
-        </span>
-    </div>
-</ng-container>
+</div>
