@@ -33,7 +33,7 @@ export class CurrentDraftSlotTeamComponent implements OnInit {
   getLeagueUserName(): Observable<string> {
     return this.getLeagueUser()
     .pipe(
-      map(_ => _.display_name)
+      map(_ => _?.display_name ?? "")
     );
   }
 
@@ -45,6 +45,10 @@ export class CurrentDraftSlotTeamComponent implements OnInit {
   }
 
   getLeagueUserId(): string {
+    if (this.draft.draft_order === undefined || this.draft.draft_order === null) {
+      return undefined;
+    }
+
     return [...Object.entries(this.draft.draft_order)]
       .filter(({ 1: v }) => v === this.slot)
       .map(([k]) => k)[0];

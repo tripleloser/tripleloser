@@ -47,7 +47,7 @@
             <th mat-header-cell *matHeaderCellDef>Record</th>
             <td mat-cell *matCellDef="let row">
                 <span>{{ getRecordString(row.roster) }}</span>
-                <span style="margin-left: 5px;" class="small">({{ row.roster.metadata.streak }})</span>
+                <span style="margin-left: 5px;" class="small">({{ row.roster.metadata?.streak }})</span>
             </td>
         </ng-container>
 

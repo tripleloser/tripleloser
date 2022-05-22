@@ -50,19 +50,26 @@ export class ConfigService {
       currentWeek: this.getCurrentWeek(),
       leagues: [
         {
-          leagueId: '784818253506748416',
+          leagueId: '827607422108536832',
           relegationSettings: {
             playoffs: 0,
             relegated: 1000,
           }
         },
-        {
-          leagueId: '784687705807306752',
-          relegationSettings: {
-            playoffs: 0,
-            relegated: 1000,
-          }
-        }
+        // {
+        //   leagueId: '784818253506748416',
+        //   relegationSettings: {
+        //     playoffs: 0,
+        //     relegated: 1000,
+        //   }
+        // },
+        // {
+        //   leagueId: '784687705807306752',
+        //   relegationSettings: {
+        //     playoffs: 0,
+        //     relegated: 1000,
+        //   }
+        // }
       ]
     };
   }
