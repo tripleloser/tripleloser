@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Config, LeagueConfig } from 'src/app/models/config.model';
 import { Draft } from 'src/app/models/draft.model';
 import { DraftPick } from 'src/app/models/draftPick.model';
@@ -17,7 +19,6 @@ export class CurrentDraftComponent implements OnInit {
   config: Config
 
   picksOfDrafts: DraftPick[][] = [];
-  leagueNames: Map<string,string> = new Map<string,string>();
   dataLoaded = false;
 
   constructor(
@@ -27,6 +28,13 @@ export class CurrentDraftComponent implements OnInit {
 
   ngOnInit(): void {
     this.config = this.configService.getLeaguesConfig();
+  }
+
+  getLeagueName(leagueId: string): Observable<string> {
+    return this.leagueService.getLeague(leagueId)
+      .pipe(
+        map(_ => _.name)
+      );
   }
 
 }

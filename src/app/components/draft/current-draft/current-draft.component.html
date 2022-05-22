@@ -1,5 +1,11 @@
-<div *ngFor="let league of config.leagues">
-    <app-current-draft-league
-    [leagueId]="league.leagueId"
-    ></app-current-draft-league>
-</div>
+<mat-tab-group>
+    <ng-container *ngFor="let league of config.leagues">
+        <mat-tab label="{{ getLeagueName(league.leagueId) | async }}">
+            <ng-template matTabContent>
+                <app-current-draft-league
+                [leagueId]="league.leagueId"
+                ></app-current-draft-league>
+            </ng-template>
+        </mat-tab>
+    </ng-container>
+</mat-tab-group>
