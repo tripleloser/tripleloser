@@ -52,14 +52,14 @@ export class ConfigService {
         {
           leagueId: '784818253506748416',
           relegationSettings: {
-            playoffs: 4,
+            playoffs: 0,
             relegated: 1000,
           }
         },
         {
           leagueId: '784687705807306752',
           relegationSettings: {
-            playoffs: 4,
+            playoffs: 0,
             relegated: 1000,
           }
         }

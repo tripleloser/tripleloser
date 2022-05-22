@@ -20,6 +20,7 @@ export class Settings {
     fpts_against_decimal: number;
     ppts: number;
     ppts_decimal: number;
+    division: number;
 }
 
 export class RosterMetaData {

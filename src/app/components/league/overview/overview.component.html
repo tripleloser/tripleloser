@@ -2,12 +2,15 @@
     *ngIf="league !== undefined && league !== null && rosters !== undefined && rosters !== null; else spinner"
     class=overview-container>
     <h2>{{ league.name }}</h2>
-    <app-standings
+    <div *ngFor="let division of divisions">
+        <h3>{{ division.name }}</h3>
+        <app-standings
         [leagueId]="leagueConfig.leagueId"
-        [rosters]="rosters"
+        [rosters]="getRostersByDivision(division.num)"
         [leagueConfig]="leagueConfig"
         [users]="users"
     ></app-standings>
+    </div>
 </div>
 
 <ng-template #spinner>

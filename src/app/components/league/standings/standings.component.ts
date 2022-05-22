@@ -36,11 +36,11 @@ export class StandingsComponent implements OnInit {
   }
 
   getPointsFor(roster: Roster): number {
-    return roster.settings.fpts + roster.settings.fpts_decimal / 100;
+    return (roster.settings.fpts ?? 0) + (roster.settings.fpts_decimal ?? 0) / 100;
   }
 
   getPointsAgainst(roster: Roster): number {
-    return roster.settings.fpts_against + roster.settings.fpts_against_decimal / 100;
+    return (roster.settings.fpts_against ?? 0) + (roster.settings.fpts_against_decimal ?? 0) / 100;
   }
 
   getRecord(roster: Roster): number {
