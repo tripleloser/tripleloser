@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Config } from '../models/config.model';
+import { Player } from '../models/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,14 @@ export class ConfigService {
   public positions: string[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DL', 'LB', 'DB']
 
   constructor() { }
+
+  getFilteredPositions(players: Player[]): string[] {
+    const foundPositions = players
+      .map(player => player.fantasy_positions)
+      .reduce((accumulator, value) => accumulator.concat(value), []);
+    
+      return this.positions.filter(position => foundPositions.indexOf(position) >= 0);
+  }
 
   getCurrentWeek(): number {
     return 1;
@@ -20,6 +29,11 @@ export class ConfigService {
       maxWeek: 15,
       currentWeek: this.getCurrentWeek(),
       leagues: [
+        // {
+        //   leagueId: '702568878819069952'
+        // },
+
+
         {
           leagueId: '827607422108536832',
           relegationSettings: {
@@ -41,6 +55,8 @@ export class ConfigService {
             relegated: 100000,
           }
         },
+
+
         // {
         //   leagueId: '784818253506748416',
         //   relegationSettings: {

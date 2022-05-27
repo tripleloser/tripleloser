@@ -32,19 +32,19 @@
         </h2>
         
         <div class="row">
-            <div>
+            <div *ngIf="award?.best?.player !== undefined">
                 <span class="label-left">Best: {{ award.best.points }}</span>
                 <app-player-card [playerId]="award.best.player.player_id"></app-player-card>
                 <app-owner-information [rosterAndLeagues]="getOwner(award.best.player.player_id, currentWeek, true) | async"></app-owner-information>
             </div>
 
-            <div>
+            <div *ngIf="award?.worst?.player !== undefined">
                 <span class="label-left">Worst: {{ award.worst.points }}</span>
                 <app-player-card [playerId]="award.worst.player.player_id"></app-player-card>
                 <app-owner-information [rosterAndLeagues]="getOwner(award.worst.player.player_id, currentWeek, true) | async"></app-owner-information>
             </div>
 
-            <div>
+            <div *ngIf="award?.bestBench?.player !== undefined">
                 <span class="label-left">Bench: {{ award.bestBench.points }}</span>
                 <app-player-card [playerId]="award.bestBench.player.player_id"></app-player-card>
                 <app-owner-information [rosterAndLeagues]="getOwner(award.bestBench.player.player_id, currentWeek, false) | async"></app-owner-information>

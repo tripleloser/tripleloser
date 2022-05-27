@@ -61,7 +61,7 @@ import { PlayerService } from "./player.service";
                         }
                     });
 
-                    this.configService.positions.forEach((position: string) => {
+                    this.configService.getFilteredPositions(allPlayers).forEach((position: string) => {
                         const starterAwards = this.getStarterAwards(allPlayers, matchups, position);
                         const benchAwards = this.getBenchAwards(allPlayers, matchups, position);
                         positionAwards.push({

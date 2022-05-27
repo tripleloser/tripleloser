@@ -4,6 +4,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { Config } from 'src/app/models/config.model';
 import { League } from 'src/app/models/league.model';
 import { Matchup } from 'src/app/models/matchup.model';
+import { NflState } from 'src/app/models/nflState.model';
 import { RosterAndLeague } from 'src/app/models/roster.model';
 import { Awards } from 'src/app/models/stats.model';
 import { ConfigService } from 'src/app/services/config.service';
@@ -33,8 +34,8 @@ export class WeeklyAwardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.config = this.configService.getLeaguesConfig();
-    this.currentWeek = this.config.currentWeek;
     this.leagues.push({league_id: 'all', name: 'Overall'});
+    
     this.config.leagues.forEach(league => {
       this.leagueService
         .getLeague(league.leagueId)
@@ -42,7 +43,13 @@ export class WeeklyAwardsComponent implements OnInit {
           this.leagues.push(_);
         });
     });
-    this.loadData(this.currentWeek);
+
+    this.leagueService
+      .getNflState()
+      .subscribe((nflState: NflState) => {
+        this.currentWeek = Math.max(1, this.config.currentWeek - 1);
+        this.loadData(this.currentWeek);
+      });
   }
 
   getLeagueIds(): string[] {
