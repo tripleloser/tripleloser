@@ -38,6 +38,7 @@ import { CurrentDraftComponent } from './components/draft/current-draft/current-
 import { CurrentDraftLeagueComponent } from './components/draft/current-draft-league/current-draft-league.component';
 import { CurrentDraftSlotComponent } from './components/draft/current-draft-slot/current-draft-slot.component';
 import { CurrentDraftSlotTeamComponent } from './components/draft/current-draft-slot-team/current-draft-slot-team.component';
+import { WeeklyManagerAwardsComponent } from './components/awards/weekly-manager-awards/weekly-manager-awards.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CurrentDraftSlotTeamComponent } from './components/draft/current-draft-
     CurrentDraftLeagueComponent,
     CurrentDraftSlotComponent,
     CurrentDraftSlotTeamComponent,
+    WeeklyManagerAwardsComponent,
   ],
   imports: [
     BrowserModule,

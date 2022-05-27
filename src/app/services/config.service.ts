@@ -7,7 +7,11 @@ import { Player } from '../models/player.model';
 })
 export class ConfigService {
 
-  public positions: string[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DL', 'LB', 'DB']
+  public positions: string[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DL', 'LB', 'DB'];
+  public random_avatars = [
+    'https://sleepercdn.com/content/nfl/players/2199.jpg',
+    'https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/15815.png',
+  ];
 
   constructor() { }
 
@@ -23,6 +27,13 @@ export class ConfigService {
     return 1;
   }
 
+  getRandomAvatar(userId: string): string {
+    if (userId === undefined || userId === null) {
+      return this.random_avatars[0];
+    }
+    return this.random_avatars[parseInt(userId[userId.length-1]) % this.random_avatars.length];
+  }
+
   getLeaguesConfig(): Config {
     return {
       minWeek: 1,
@@ -30,7 +41,10 @@ export class ConfigService {
       currentWeek: this.getCurrentWeek(),
       leagues: [
         // {
-        //   leagueId: '702568878819069952'
+        //   leagueId: '702568878819069952' // Anfänger Bromantiker
+        // },
+        // {
+        //   leagueId: '650046539233861632' // Keeper German
         // },
 
 

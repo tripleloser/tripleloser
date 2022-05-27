@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Draft } from 'src/app/models/draft.model';
 import { LeagueUser } from 'src/app/models/leagueUsers.model';
+import { ConfigService } from 'src/app/services/config.service';
 import { LeagueService } from 'src/app/services/league.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,7 +21,9 @@ export class CurrentDraftSlotTeamComponent implements OnInit {
 
   constructor(
     private leagueService: LeagueService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private configService: ConfigService,
+  ) { }
 
   ngOnInit(): void {
     this.leagueService.getLeagueUserByUserId(
@@ -33,7 +36,7 @@ export class CurrentDraftSlotTeamComponent implements OnInit {
   getLeagueUserName(): Observable<string> {
     return this.getLeagueUser()
     .pipe(
-      map(_ => _?.display_name ?? "")
+      map(_ => _?.display_name ?? 'Unknown')
     );
   }
 
@@ -58,7 +61,6 @@ export class CurrentDraftSlotTeamComponent implements OnInit {
     if (this.leagueUser?.avatar !== null && this.leagueUser?.avatar !== undefined) {
       return `${this.userService.AVATAR_BASE_URL}/${this.leagueUser.avatar}`;
     }
-    return 'https://sleepercdn.com/content/nfl/players/2199.jpg';
+    return this.configService.getRandomAvatar(this.leagueUser?.user_id);
   }
-
 }

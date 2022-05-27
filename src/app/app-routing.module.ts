@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'standings', component: AllStandingsComponent },
   { path: 'matchups', component: MatchupsOverviewComponent },
   { path: 'drafts', component: CurrentDraftComponent },
+  { path: 'draftstats', component: DraftOverviewComponent },
   { path: 'roster', component: RosterComponent },
   { path: 'awards', component: AwardsOverviewComponent },
 ];

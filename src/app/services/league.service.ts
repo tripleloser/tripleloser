@@ -1,6 +1,6 @@
 import { flatten } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { find, map, mergeAll } from 'rxjs/operators';
 import { League } from '../models/league.model';
 import { LeagueUser } from '../models/leagueUsers.model';
@@ -48,6 +48,22 @@ export class LeagueService {
     return this.leagueUserStore.get(leagueId)
   }
 
+  getLeagueUserByLeagueIdAndRosterId(leagueId: string, rosterId: number): Observable<LeagueUser> {
+    return combineLatest(
+      [
+        this.getRosters(leagueId),
+        this.getLeagueUsers(leagueId)
+      ]
+    ).pipe(
+      map((value: [Roster[], LeagueUser[]]) => {
+        const rosters = value[0];
+        const leagueUsers = value[1];
+        const ownerId = rosters.find(_ => _.roster_id === rosterId)?.owner_id;
+        return leagueUsers.find(leagueUser => leagueUser.user_id === ownerId);
+      })
+    );
+  }
+
   getMatchups(leagueId: string, week: number): Observable<Matchup[]> {
     return this.matchupStore.get({leagueId, week})
       .pipe(map(m => {
@@ -57,6 +73,13 @@ export class LeagueService {
         })
         return m;
       }));
+  }
+
+  getMatchupsMultipleLeagues(leagueIds: string[], week: number): Observable<any> {
+    return combineLatest(leagueIds.map(leagueId => this.getMatchups(leagueId, week)))
+      .pipe(
+        map(_ => _.reduce((accumulator, value) => accumulator.concat(value), []))
+      );
   }
 
   getTradedPicks(leagueId: string): Observable<TradedPick[]> {

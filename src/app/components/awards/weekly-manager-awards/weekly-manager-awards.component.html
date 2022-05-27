@@ -1,0 +1,81 @@
+<h1>
+    Awards Week {{ currentWeek }}
+    <button mat-mini-fab (click)="this.addWeek(-1)">
+      -
+    </button>
+    <button mat-mini-fab (click)="this.addWeek(1)">
+        +
+    </button>
+    <mat-form-field class="league-select">
+        <mat-label>League</mat-label>
+        <mat-select [(value)]="selectedLeagueId" (selectionChange)="selectLeague()">
+          <mat-option *ngFor="let league of getSortedLeagues()" [value]="league.league_id">
+            {{ getLeagueName(league.league_id) | async }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</h1>
+
+<div *ngIf="this.dataSource.data.length === 0">
+    <div *ngIf="this.error" class="error">
+        Error loading data
+    </div>
+    <div *ngIf="!this.error">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>
+
+<div class="mat-elevation-z8" [hidden]="this.dataSource.data.length === 0">
+    <table mat-table [dataSource]="dataSource" matSort matSortActive="rank">
+
+        <!-- Rank Column -->
+        <ng-container matColumnDef="rank">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Rank</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.rank }}
+            </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Manager</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.leagueUserName$ | async }}
+            </td>
+        </ng-container>
+
+        <!-- League Column -->
+        <ng-container matColumnDef="league">
+            <th mat-header-cell *matHeaderCellDef>League</th>
+            <td mat-cell *matCellDef="let row">
+                {{ getLeagueName(row.leagueId) | async }}
+            </td>
+        </ng-container>
+
+        <!-- Starter Points Column -->
+        <ng-container matColumnDef="starterPoints">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Points</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.starterPoints | number : '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <!-- Bench Points Column -->
+        <ng-container matColumnDef="benchPoints">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Bench</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.benchPoints | number : '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" [hidden]="dataSource.data.length === 0"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator
+        [pageSizeOptions]="[10, 25, 50, 100]"
+        [hidden]="dataSource.data.length === 0"
+        aria-label="Select page"
+    ></mat-paginator>
+</div>

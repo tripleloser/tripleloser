@@ -47,7 +47,7 @@ export class WeeklyAwardsComponent implements OnInit {
     this.leagueService
       .getNflState()
       .subscribe((nflState: NflState) => {
-        this.currentWeek = Math.max(1, this.config.currentWeek - 1);
+        this.currentWeek = Math.max(1, nflState.display_week - 1);
         this.loadData(this.currentWeek);
       });
   }

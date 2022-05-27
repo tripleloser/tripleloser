@@ -57,12 +57,14 @@ export class CurrentDraftLeagueComponent implements OnInit {
       this.leagueService.getTradedPicksByYear(this.draft.league_id, nflState.league_season).subscribe((p: TradedPick[]) => {
         this.tradedPicks = p;
         this.leagueService.getRosters(this.leagueId).subscribe((rosters: Roster[]) => {
-          this.tradedPicks.forEach((tradedPick: TradedPick) => {
-            const roster = rosters.find(r => r.roster_id === tradedPick.roster_id);
-            tradedPick.slot = this.draft.draft_order[roster.owner_id];
-            tradedPick.newOwnerUserId = roster.owner_id;
-            tradedPicks.push(tradedPick);
-          });
+          if (rosters !== undefined) {
+            this.tradedPicks.forEach((tradedPick: TradedPick) => {
+              const roster = rosters.find(r => r.roster_id === tradedPick.roster_id);
+              tradedPick.slot = this.draft.draft_order[roster.owner_id];
+              tradedPick.newOwnerUserId = roster.owner_id;
+              tradedPicks.push(tradedPick);
+            });
+          }
           this.tradedPicks = tradedPicks;
         });
       });
