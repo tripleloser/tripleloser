@@ -49,21 +49,21 @@ export class ConfigService {
 
 
         {
-          leagueId: '827607422108536832',
+          leagueId: '827603093855256576', // CSL Super League
           relegationSettings: {
             playoffs: 0,
             relegated: 9,
           }
         },
         {
-          leagueId: '827607422108536832',
+          leagueId: '827607422108536832', // CSL Zweitligalappenliga
           relegationSettings: {
             playoffs: 2,
             relegated: 9,
           }
         },
         {
-          leagueId: '827607422108536832',
+          leagueId: '827607786400624640', // CSL Regionalliga
           relegationSettings: {
             playoffs: 2,
             relegated: 100000,
